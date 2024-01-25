@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen 1</title>
+</head>
+<body>
+    <audio id="myAudio">
+        <source src="./av10l3u00_hacd3_trk1.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="playAudio()" type="button">Reproducir audio</button>
+    <p id="message">Tienes 2 reproducciones para el audio.</p>
+    <script>
+        var x = document.getElementById("myAudio");
+        var count = 0;
+
+
+        function playAudio() { 
+            if (count <= 1) {
+                x.play(); 
+                console.log(count)
+            }
+            if (count == 0) {
+                document.getElementById("message").innerHTML = "Te queda 1 reproducción mas para el audio."
+            }
+            if (count == 1) {
+                document.getElementById("message").innerHTML = "Esta es tu última reproducción para el audio."
+            }
+
+            x.onended = function(){
+                count++;
+                console.log('You do say.');
+                if (count == 1)
+                    document.getElementById("message").innerHTML = "Te queda 1 reproducción mas para el audio."
+            }
+            console.log(count)
+        }     
+    </script>
+</body>
+</html>
